@@ -1,19 +1,14 @@
-FROM python:3.9.10-alpine
+FROM python:3
 
 # Install git and clone the repository
-RUN apk add --no-cache git
-WORKDIR /app
-RUN git clone 
-FROM python:3.9.10-alpine
-
-RUN apk add --no-cache git
-
+RUN apt-get update && apt-get install -y git
 WORKDIR /app
 
 RUN git clone https://github.com/Zero6992/chatGPT-discord-bot.git .
 
-COPY requirements.txt .
-COPY src/ ./src/
+RUN ls -l && echo "Finished listing files."
+
+COPY . .
 
 RUN pip install -r requirements.txt
 
